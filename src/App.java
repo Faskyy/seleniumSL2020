@@ -32,6 +32,7 @@ public class App {
         writeToLog("++ Test initialized at " + getTime());
         // configure driver executable, initialize
         
+        //update your directory manually
         System.setProperty("webdriver.chrome.driver","chromedriver.exe");
      
         final WebDriver driver = new ChromeDriver();
