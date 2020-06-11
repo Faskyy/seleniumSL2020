@@ -5,7 +5,7 @@
 * To download Selenium, click [here](https://www.selenium.dev/downloads/)
 * To download the Eclipse IDE, click [here](https://www.eclipse.org/downloads/)
 * To install ChromeDriver, click [here](https://sites.google.com/a/chromium.org/chromedriver/)
-* **NOTE: if you are not using ChromeDriver, other WebDrivers are available on the Selenium download page**
+* **NOTE: if you are not using Google Chrome as your primary driver,, other WebDrivers are available on the Selenium download page**
 
 ## Setup
 1. Once everything is installed, open the Eclipse IDE.
