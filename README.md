@@ -25,6 +25,6 @@
    
 7. If that doesn't work, you might have to initialize your directory by:
    * Opening your command prompt.
-   * Typing in the "command chmod +x" followed by the WebDriver directory.
+   * Typing in the command "chmod +x" followed by the WebDriver directory.
    
 8. Once all this is complete, your Selenium should be set up. Happy Seleniuming!
