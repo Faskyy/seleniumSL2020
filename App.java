@@ -75,10 +75,12 @@ public class App {
         Thread.sleep(2000);
         WebElement emailInput = wd.findElement(By.id("input_0"));
         emailInput.click();
-        emailInput.sendKeys("onebulletboy@socialladderapp.com");
+        //manually input username
+        emailInput.sendKeys("");
         WebElement passwordInput = wd.findElement(By.id("input_1"));
         passwordInput.click();
-        passwordInput.sendKeys("social33!");
+        //manually input password
+        passwordInput.sendKeys("");
         writeToLog("Credentials entered.");
         WebElement loginButton = wd.findElement(By.xpath("/html/body/div/md-content[1]/button"));
         loginButton.click();
