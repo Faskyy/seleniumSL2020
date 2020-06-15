@@ -118,8 +118,8 @@ public class App {
             div[@id='base_currency_selector']//span[text()='Survey'] */
             
             surveyButton.click();
-        } catch (Exception s) {
-            System.out.println(s);
+        } catch (Exception e) {
+            System.out.println(e);
         }
         
 //      
@@ -133,8 +133,8 @@ public class App {
         		+ "/div/div/section[3]/div[2]/button"));
         	nextButton.click();
         
-        } catch (Exception b) {
-        	System.out.print(b);
+        } catch (Exception e) {
+        	System.out.print(e);
         
         }
         
@@ -143,8 +143,8 @@ public class App {
         	WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]"
         			+ "/div/div/section[3]/div[2]/button"));
         	nextButton.click();
-        } catch (Exception b) {
-        	System.out.print(b);
+        } catch (Exception e) {
+        	System.out.print(e);
         }
         
         try {
@@ -152,8 +152,8 @@ public class App {
         
         WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
         nextButton.click();
-        } catch (Exception b) {
-        	System.out.print(b);
+        } catch (Exception e) {
+        	System.out.print(e);
         }
         
         WebElement option1Input = wd.findElement(By.id("input_429"));
@@ -164,10 +164,18 @@ public class App {
         option2Input.click();
         option2Input.sendKeys("061522");
         
+      try {
+    	  Thread.sleep(1000);
       
         WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
         nextButton.click();
+      } catch (Exception e) {
+    	  System.out.print(e);
+      }
+//        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+//        nextButton.click();
         
     }
+}
 }
 }
