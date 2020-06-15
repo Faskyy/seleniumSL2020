@@ -32,8 +32,7 @@ public class App {
         writeToLog("++ Test initialized at " + getTime());
         // configure driver executable, initialize
         
-        //update your directory manually
-        System.setProperty("webdriver.chrome.driver","chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","/Users/fahdksara/Desktop/SeleniumTest/Installers/Drivers/chromedriver");
      
         final WebDriver driver = new ChromeDriver();
         // execute test methods in sequence
@@ -78,11 +77,11 @@ public class App {
         WebElement emailInput = wd.findElement(By.id("input_0"));
         emailInput.click();
         //manually input username
-        emailInput.sendKeys("");
+        emailInput.sendKeys("onebulletboy@socialladderapp.com");
         WebElement passwordInput = wd.findElement(By.id("input_1"));
         passwordInput.click();
         //manually input password
-        passwordInput.sendKeys("");
+        passwordInput.sendKeys("social33!");
         writeToLog("Credentials entered.");
         WebElement loginButton = wd.findElement(By.xpath("/html/body/div/md-content[1]/button"));
         loginButton.click();
@@ -94,16 +93,14 @@ public class App {
     }
 
     public static void testChallenges(WebDriver wd) {
-        WebElement challengeBtn = wd
-                .findElement(By.xpath("/html/body/main-component/div/menu-component/md-sidenav/nav/a[2]/span"));
+        WebElement challengeBtn = wd.findElement(By.xpath("/html/body/main-component/div/menu-component/md-sidenav/nav/a[2]/span"));
         challengeBtn.click();
 
         //// a[contains(text(),'Create')] possibility if not using class type
         try {
 
             Thread.sleep(3000);
-            WebElement createButton = wd
-                    .findElement(By.xpath("//button[@class=\"md-primary md-raised md-button md-ink-ripple\"]"));
+            WebElement createButton = wd.findElement(By.xpath("//button[@class=\"md-primary md-raised md-button md-ink-ripple\"]"));
             createButton.click();
 
         } catch (Exception e) {
@@ -113,11 +110,64 @@ public class App {
         try {
 
             Thread.sleep(3000);
-            WebElement surveyButton = wd.findElement(By.xpath("//div[@class=\"challenge-type\"]"));
+            WebElement surveyButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]"
+            		+ "/div/div/section[2]/section[2]/div[1]/section[1]/div/section[2]/section/div[2]"));
+        
+            /* potential solutions?? 
+            button[@id="dialogContent_394"]
+            div[@id='base_currency_selector']//span[text()='Survey'] */
+            
             surveyButton.click();
         } catch (Exception s) {
             System.out.println(s);
         }
-
+        
+//      
+//        WebElement surveyName = wd.findElement(By.id("#input_323"));
+//        surveyName.click();
+//        surveyName.sendKeys("Regression Test 065120");
+//        
+        try {
+        	Thread.sleep(3000);
+        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]"
+        		+ "/div/div/section[3]/div[2]/button"));
+        	nextButton.click();
+        
+        } catch (Exception b) {
+        	System.out.print(b);
+        
+        }
+        
+        try {
+        	Thread.sleep(3000);
+        	WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]"
+        			+ "/div/div/section[3]/div[2]/button"));
+        	nextButton.click();
+        } catch (Exception b) {
+        	System.out.print(b);
+        }
+        
+        try {
+        	Thread.sleep(3000);
+        
+        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+        nextButton.click();
+        } catch (Exception b) {
+        	System.out.print(b);
+        }
+        
+        WebElement option1Input = wd.findElement(By.id("input_429"));
+        option1Input.click();
+        option1Input.sendKeys("061521");
+        
+        WebElement option2Input = wd.findElement(By.id("input_430"));
+        option2Input.click();
+        option2Input.sendKeys("061522");
+        
+      
+        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+        nextButton.click();
+        
     }
+}
 }
