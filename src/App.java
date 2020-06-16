@@ -9,14 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 public class App {
     static String dataLog = "";
-    static String currentDirectory = System.getProperty("user.dir");
-    
-
-    //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
-    static int userNum = 2;
+    static String userName = "";
 
     // return current date/time in readable format
     public static String getTime() {
@@ -35,12 +32,8 @@ public class App {
         writeToLog("++ Test initialized at " + getTime());
         // configure driver executable, initialize
         
-        if(userNum == 1){
-            System.setProperty("webdriver.chrome.driver", currentDirectory + "/src/chromedriver");
-        }
-        if(userNum == 2){
-            System.setProperty("webdriver.chrome.driver", currentDirectory + "\\src\\chromedriver.exe");
-        }
+        System.setProperty("webdriver.chrome.driver","/Users/fahdksara/Desktop/SeleniumTest/Installers/Drivers/chromedriver");
+     
         final WebDriver driver = new ChromeDriver();
         // execute test methods in sequence
         searchGoogle(driver);
@@ -179,8 +172,31 @@ public class App {
       } catch (Exception e) {
     	  System.out.print(e);
       }
-//        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
-//        nextButton.click();
+      
+      try {
+    	  Thread.sleep(1000);
+      
+        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+        nextButton.click();
+      } catch (Exception e) {
+    	  System.out.print(e);
+      }
+
+      	try {
+      		Thread.sleep(2000);
+      	WebElement challengeDescription = wd.findElement(By.xpath("//*[@id=\"input_371\"]"));
+      	challengeDescription.click();
+      	challengeDescription.sendKeys("Pick one of the two survey answers");
+      	} catch (Exception e) {
+      		System.out.print(e);
+      	}
+      	
+      	try {
+      	  Thread.sleep(1000);
         
+          WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+          nextButton.click();
+        } catch (Exception e) {
+      	  System.out.print(e);
+        }
     }
-}
