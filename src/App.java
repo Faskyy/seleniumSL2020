@@ -9,11 +9,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 public class App {
     static String dataLog = "";
-    static String userName = "";
+    static String currentDirectory = System.getProperty("user.dir");
+    
+
+    //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
+    static int userNum = 2;
 
     // return current date/time in readable format
     public static String getTime() {
@@ -32,8 +35,12 @@ public class App {
         writeToLog("++ Test initialized at " + getTime());
         // configure driver executable, initialize
         
-        System.setProperty("webdriver.chrome.driver","/Users/fahdksara/Desktop/SeleniumTest/Installers/Drivers/chromedriver");
-     
+        if(userNum == 1){
+            System.setProperty("webdriver.chrome.driver", currentDirectory + "/src/chromedriver");
+        }
+        if(userNum == 2){
+            System.setProperty("webdriver.chrome.driver", currentDirectory + "\\src\\chromedriver.exe");
+        }
         final WebDriver driver = new ChromeDriver();
         // execute test methods in sequence
         searchGoogle(driver);
@@ -176,6 +183,4 @@ public class App {
 //        nextButton.click();
         
     }
-}
-}
 }
