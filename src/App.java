@@ -199,4 +199,22 @@ public class App {
         } catch (Exception e) {
       	  System.out.print(e);
         }
+      	
+      	WebElement dropDown = wd.findElement(By.xpath("//*[@id=\"select_value_label_318\"]"));
+      	dropDown.click();
+      	
+      	WebElement allUsers = wd.findElement(By.xpath("//*[@id=\"select_option_431\"]"));
+      	allUsers.click();
+      	
+      	try {
+        	  Thread.sleep(1000);
+          
+            WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+            nextButton.click();
+          } catch (Exception e) {
+        	  System.out.print(e);
+          }
+      	      	
+    }
+}
     }
