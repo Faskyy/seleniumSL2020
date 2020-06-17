@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 public class App {
     static String dataLog = "";
@@ -25,6 +24,12 @@ public class App {
     // append string to log
     public static void writeToLog(String data) {
         dataLog = dataLog + "\n" + data;
+    }
+
+    public static String dateNamer(){
+        SimpleDateFormat formatter = new SimpleDateFormat("MMddYYYY");
+        Date date = new Date(System.currentTimeMillis());
+        return (formatter.format(date));
     }
     public static void main(final String[] args) throws InterruptedException{
         writeToLog("++ Test initialized at " + getTime());
@@ -160,11 +165,11 @@ public class App {
         
         WebElement option1Input = wd.findElement(By.id("input_429"));
         option1Input.click();
-        option1Input.sendKeys("061521");
+        option1Input.sendKeys(dateNamer());
         
         WebElement option2Input = wd.findElement(By.id("input_430"));
         option2Input.click();
-        option2Input.sendKeys("061522");
+        option2Input.sendKeys("Incorrect");
         
       try {
     	  Thread.sleep(1000);
@@ -219,4 +224,4 @@ public class App {
       	      	
     }
 }
-    }
+    
