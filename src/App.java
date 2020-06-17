@@ -13,26 +13,28 @@ import java.util.Scanner;
 
 public class App {
     static String dataLog = "";
-    static String userName = "";
-
+    static String currentDirectory = System.getProperty("user.dir");
+    //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
+    static int userNum = 2;
     // return current date/time in readable format
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());
         return (formatter.format(date));
     }
-
     // append string to log
     public static void writeToLog(String data) {
         dataLog = dataLog + "\n" + data;
     }
-
     public static void main(final String[] args) throws InterruptedException{
-       
         writeToLog("++ Test initialized at " + getTime());
         // configure driver executable, initialize
-        
-        System.setProperty("webdriver.chrome.driver","/Users/fahdksara/Desktop/SeleniumTest/Installers/Drivers/chromedriver");
+        if(userNum == 1){
+            System.setProperty("webdriver.chrome.driver", currentDirectory + "/src/chromedriver");
+        }
+        if(userNum == 2){
+            System.setProperty("webdriver.chrome.driver", currentDirectory + "\\src\\chromedriver.exe");
+        }
      
         final WebDriver driver = new ChromeDriver();
         // execute test methods in sequence
