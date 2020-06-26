@@ -21,6 +21,14 @@ public class App {
         Date date = new Date(System.currentTimeMillis());
         return (formatter.format(date));
     }
+
+    //Return formatted challenge name based on current date
+    public static String nameChallenge(){
+        SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy'A'");
+        Date date = new Date(System.currentTimeMillis());
+        return (formatter.format(date));
+    }
+
     // append string to log
     public static void writeToLog(String data) {
         dataLog = dataLog + "\n" + data;
