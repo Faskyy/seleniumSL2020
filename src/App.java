@@ -13,8 +13,9 @@ import java.util.Date;
 public class App {
     static String dataLog = "";
     static String currentDirectory = System.getProperty("user.dir");
+    
     //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
-    static int userNum = 2;
+    static int userNum = 1;
     // return current date/time in readable format
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -25,17 +26,11 @@ public class App {
     public static void writeToLog(String data) {
         dataLog = dataLog + "\n" + data;
     }
-
-    public static String dateNamer(){
-        SimpleDateFormat formatter = new SimpleDateFormat("MMddYYYY");
-        Date date = new Date(System.currentTimeMillis());
-        return (formatter.format(date));
-    }
     public static void main(final String[] args) throws InterruptedException{
         writeToLog("++ Test initialized at " + getTime());
         // configure driver executable, initialize
         if(userNum == 1){
-            System.setProperty("webdriver.chrome.driver", currentDirectory + "/src/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "/Users/fahdksara/Desktop/SeleniumTest/Installers/Drivers/chromedriver");
         }
         if(userNum == 2){
             System.setProperty("webdriver.chrome.driver", currentDirectory + "\\src\\chromedriver.exe");
@@ -48,6 +43,7 @@ public class App {
         // testHomeModule(driver);
         Thread.sleep(3000);
         testChallenges(driver);
+        //testPublish(driver);
         // close the browser
         Thread.sleep(5000);
         driver.close();
@@ -55,7 +51,8 @@ public class App {
         System.out.println(dataLog);
     }
 
-    // initialize a browser to google.com and search for "socialladder". click the
+    
+	// initialize a browser to google.com and search for "socialladder". click the
     // link to our website
     public static void searchGoogle(WebDriver wd) {
         // open browser with google
@@ -115,15 +112,10 @@ public class App {
         }
 
         try {
-
             Thread.sleep(3000);
-            WebElement surveyButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]"
-            		+ "/div/div/section[2]/section[2]/div[1]/section[1]/div/section[2]/section/div[2]"));
-        
-            /* potential solutions?? 
-            button[@id="dialogContent_394"]
-            div[@id='base_currency_selector']//span[text()='Survey'] */
-            
+            WebElement surveyButton = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[2]/"
+            		+ "section[2]/div[1]/section[1]/div/section[2]/section/div[2]"));
+           
             surveyButton.click();
         } catch (Exception e) {
             System.out.println(e);
@@ -165,11 +157,11 @@ public class App {
         
         WebElement option1Input = wd.findElement(By.id("input_429"));
         option1Input.click();
-        option1Input.sendKeys(dateNamer());
+        option1Input.sendKeys("061521");
         
         WebElement option2Input = wd.findElement(By.id("input_430"));
         option2Input.click();
-        option2Input.sendKeys("Incorrect");
+        option2Input.sendKeys("061522");
         
       try {
     	  Thread.sleep(1000);
@@ -221,7 +213,10 @@ public class App {
           } catch (Exception e) {
         	  System.out.print(e);
           }
+      	
       	      	
     }
+
+}
 }
     
