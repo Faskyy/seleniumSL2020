@@ -1,4 +1,3 @@
-
 // Automated regression testing program for use with SocialLadder platform. 
 // Authors Patrick Kiefer and Fahd Ksara
 // v1.0 06/2020
@@ -128,8 +127,8 @@ public class App {
 //        
         try {
         	Thread.sleep(3000);
-        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]"
-        		+ "/div/div/section[3]/div[2]/button"));
+        WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
+        		+ "/md-dialog/div/div/section[3]/div[2]/button"));
         	nextButton.click();
         
         } catch (Exception e) {
@@ -139,8 +138,8 @@ public class App {
         
         try {
         	Thread.sleep(3000);
-        	WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]"
-        			+ "/div/div/section[3]/div[2]/button"));
+        	WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
+        			+ "/md-dialog/div/div/section[3]/div[2]/button"));
         	nextButton.click();
         } catch (Exception e) {
         	System.out.print(e);
@@ -149,7 +148,8 @@ public class App {
         try {
         	Thread.sleep(3000);
         
-        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+        WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
+        		+ "/md-dialog/div/div/section[3]/div[2]/button"));
         nextButton.click();
         } catch (Exception e) {
         	System.out.print(e);
@@ -166,7 +166,8 @@ public class App {
       try {
     	  Thread.sleep(1000);
       
-        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+        WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
+        		+ "/md-dialog/div/div/section[3]/div[2]/button"));
         nextButton.click();
       } catch (Exception e) {
     	  System.out.print(e);
@@ -175,7 +176,8 @@ public class App {
       try {
     	  Thread.sleep(1000);
       
-        WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+        WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
+        		+ "/md-dialog/div/div/section[3]/div[2]/button"));
         nextButton.click();
       } catch (Exception e) {
     	  System.out.print(e);
@@ -193,7 +195,8 @@ public class App {
       	try {
       	  Thread.sleep(1000);
         
-          WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+          WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
+          		+ "/md-dialog/div/div/section[3]/div[2]/button"));
           nextButton.click();
         } catch (Exception e) {
       	  System.out.print(e);
@@ -208,7 +211,8 @@ public class App {
       	try {
         	  Thread.sleep(1000);
           
-            WebElement nextButton = wd.findElement(By.xpath("//*[@id=\"dialogContent_394\"]/div/div/section[3]/div[2]/button"));
+            WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
+            		+ "/md-dialog/div/div/section[3]/div[2]/button"));
             nextButton.click();
           } catch (Exception e) {
         	  System.out.print(e);
@@ -217,6 +221,5 @@ public class App {
       	      	
     }
 
-}
 }
     
