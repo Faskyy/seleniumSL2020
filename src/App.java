@@ -21,14 +21,6 @@ public class App {
         Date date = new Date(System.currentTimeMillis());
         return (formatter.format(date));
     }
-
-    //Return formatted challenge name based on current date
-    public static String nameChallenge(){
-        SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy'A'");
-        Date date = new Date(System.currentTimeMillis());
-        return (formatter.format(date));
-    }
-
     // append string to log
     public static void writeToLog(String data) {
         dataLog = dataLog + "\n" + data;
@@ -128,11 +120,11 @@ public class App {
             System.out.println(e);
         }
         
-//      
-//        WebElement surveyName = wd.findElement(By.id("#input_323"));
-//        surveyName.click();
-//        surveyName.sendKeys("Regression Test 065120");
-//        
+      
+        WebElement surveyName = wd.findElement(By.id("input_332"));
+        surveyName.click();
+        surveyName.sendKeys("Regression Test 065120");
+        
         try {
         	Thread.sleep(3000);
         WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
@@ -162,14 +154,20 @@ public class App {
         } catch (Exception e) {
         	System.out.print(e);
         }
+     
         
-        WebElement option1Input = wd.findElement(By.id("input_429"));
+        
+        WebElement option1Input = wd.findElement(By.xpath("/html/body/div[3]"
+        		+ "/md-dialog/div/div/section[2]/section[2]/div[5]/section[6]/div[2]"
+        		+ "/div/div/div/ul[1]/li/ul/li/md-input-container/div[1]/textarea"));
         option1Input.click();
         option1Input.sendKeys("061521");
-        
-        WebElement option2Input = wd.findElement(By.id("input_430"));
+   
+        WebElement option2Input = wd.findElement(By.id("input_439"));
         option2Input.click();
         option2Input.sendKeys("061522");
+     
+        
         
       try {
     	  Thread.sleep(1000);
@@ -193,7 +191,7 @@ public class App {
 
       	try {
       		Thread.sleep(2000);
-      	WebElement challengeDescription = wd.findElement(By.xpath("//*[@id=\"input_371\"]"));
+      	WebElement challengeDescription = wd.findElement(By.id("input_380"));
       	challengeDescription.click();
       	challengeDescription.sendKeys("Pick one of the two survey answers");
       	} catch (Exception e) {
@@ -210,10 +208,13 @@ public class App {
       	  System.out.print(e);
         }
       	
-      	WebElement dropDown = wd.findElement(By.xpath("//*[@id=\"select_value_label_318\"]"));
+      	WebElement dropDown = wd.findElement(By.xpath("/html/body/div[3]"
+      			+ "/md-dialog/div/div/section[2]/section[2]/div[7]/div[2]/div[1]/div[2]"
+      			+ "/md-input-container/md-select/md-select-value/span[1]/div"));
+      	
       	dropDown.click();
       	
-      	WebElement allUsers = wd.findElement(By.xpath("//*[@id=\"select_option_431\"]"));
+      	WebElement allUsers = wd.findElement(By.xpath("/html/body/div[8]/md-select-menu/md-content/md-option[2]"));
       	allUsers.click();
       	
       	try {
