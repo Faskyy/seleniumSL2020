@@ -21,6 +21,13 @@ public class App {
         Date date = new Date(System.currentTimeMillis());
         return (formatter.format(date));
     }
+    
+    public static String nameChallenge(){
+        SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy'A'");
+        Date date = new Date(System.currentTimeMillis());
+        return (formatter.format(date));
+    }
+    
     // append string to log
     public static void writeToLog(String data) {
         dataLog = dataLog + "\n" + data;
@@ -94,6 +101,7 @@ public class App {
     public static void testHomeModule(WebDriver wd) {
         // insert code to verify certain expected values on home tab
     }
+    
 
     public static void testChallenges(WebDriver wd) {
         WebElement challengeBtn = wd.findElement(By.xpath("/html/body/main-component/div/menu-component/md-sidenav/nav/a[2]/span"));
@@ -120,10 +128,14 @@ public class App {
             System.out.println(e);
         }
         
-      
+      try {
+    	  Thread.sleep(1000);
         WebElement surveyName = wd.findElement(By.id("input_332"));
         surveyName.click();
         surveyName.sendKeys("Regression Test 065120");
+      } catch (Exception e) {
+    	  System.out.print(e);
+      }
         
         try {
         	Thread.sleep(3000);
@@ -229,6 +241,11 @@ public class App {
       	
       	      	
     }
+    
+    public static void createFeed() {
+    	
+    }
 
 }
+    
     
