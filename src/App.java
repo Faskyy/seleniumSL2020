@@ -14,7 +14,7 @@ public class App {
     static String currentDirectory = System.getProperty("user.dir");
     
     //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
-    static int userNum = 1;
+    static int userNum = 2;
     // return current date/time in readable format
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -132,7 +132,7 @@ public class App {
     	  Thread.sleep(1000);
         WebElement surveyName = wd.findElement(By.id("input_332"));
         surveyName.click();
-        surveyName.sendKeys("Regression Test 065120");
+        surveyName.sendKeys("Regression Test" + nameChallenge());
       } catch (Exception e) {
     	  System.out.print(e);
       }
@@ -173,11 +173,11 @@ public class App {
         		+ "/md-dialog/div/div/section[2]/section[2]/div[5]/section[6]/div[2]"
         		+ "/div/div/div/ul[1]/li/ul/li/md-input-container/div[1]/textarea"));
         option1Input.click();
-        option1Input.sendKeys("061521");
+        option1Input.sendKeys(nameChallenge());
    
         WebElement option2Input = wd.findElement(By.id("input_439"));
         option2Input.click();
-        option2Input.sendKeys("061522");
+        option2Input.sendKeys("Wrong");
      
         
         
