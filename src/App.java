@@ -14,7 +14,7 @@ public class App {
     static String currentDirectory = System.getProperty("user.dir");
     
     //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
-    static int userNum = 2;
+    static int userNum = 1;
     // return current date/time in readable format
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -22,7 +22,7 @@ public class App {
         return (formatter.format(date));
     }
     
-    public static String nameByDate(){
+    public static String nameByDate() {
         SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy'A'");
         Date date = new Date(System.currentTimeMillis());
         return (formatter.format(date));
@@ -138,7 +138,8 @@ public class App {
         
       try {
     	  Thread.sleep(1000);
-        WebElement surveyName = wd.findElement(By.xpath("/html/body/div[3]"
+        
+    	  WebElement surveyName = wd.findElement(By.xpath("/html/body/div[3]"
         		+ "/md-dialog/div/div/section[2]/section[2]/div[2]/section/div[3]"
         		+ "/md-input-container/div[1]/textarea"));
         surveyName.click();
@@ -219,7 +220,7 @@ public class App {
       			+ "/md-dialog/div/div/section[2]/section[2]/div[6]"
       			+ "/section/div[3]/div/md-input-container/div[1]/textarea"));
       	challengeDescription.click();
-      	challengeDescription.sendKeys("AUTO GENERATED CHALLENGE FOR REGRESSTION TEST " + nameByDate());
+      	challengeDescription.sendKeys("AUTO GENERATED CHALLENGE FOR REGRESSION TEST " + nameByDate());
       	} catch (Exception e) {
       		System.out.print(e);
       	}
@@ -292,9 +293,32 @@ public class App {
         	System.out.println(e);
         }
          
+        WebElement dropDown = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[7]/div/md-select"));
+        dropDown.click();
     
-    }
-
+        		
+        WebElement challengeOption = wd.findElement(By.xpath("/html/body/div[8]/md-select-menu/md-content/md-option[3]"));
+        challengeOption.click();
+        
+        WebElement dropDown2 = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[8]/md-select"));
+        dropDown2.click();
+        
+        try {
+        	Thread.sleep(3000);
+        
+        WebElement allUsers = wd.findElement(By.xpath("/html/body/div[9]/md-select-menu/md-content/md-option[2]"));
+        allUsers.click();
+        } catch (Exception e) {
+        	System.out.print(e);
+        }       
+        
+        WebElement saveDraft = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[3]/button[1]"));
+        saveDraft.click();
+ 
+        }
+        
+    
 }
+    
     
     
