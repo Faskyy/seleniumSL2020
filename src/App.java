@@ -14,7 +14,7 @@ public class App {
     static String currentDirectory = System.getProperty("user.dir");
     
     //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
-    static int userNum = 2;
+    static int userNum = 1;
     // return current date/time in readable format
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -22,7 +22,7 @@ public class App {
         return (formatter.format(date));
     }
     
-    public static String nameChallenge(){
+    public static String surveyName(){
         SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy'A'");
         Date date = new Date(System.currentTimeMillis());
         return (formatter.format(date));
@@ -50,6 +50,7 @@ public class App {
         Thread.sleep(3000);
         testChallenges(driver);
         //testPublish(driver);
+        testFeed(driver);
         // close the browser
         Thread.sleep(5000);
         driver.close();
@@ -64,12 +65,19 @@ public class App {
         // open browser with google
         wd.get("https://www.google.com");
         writeToLog("Browser loaded to www.google.com.");
+        
+        try {
+        	Thread.sleep(1500);
         WebElement searchField = wd.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div[1]/div[1]/div/div[2]/input"));
         WebElement searchButton = wd
                 .findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]"));
         searchField.click();
         searchField.sendKeys("socialladder");
         searchButton.click();
+        } catch (Exception e) {
+        	System.out.println(e);
+        }
+        
         writeToLog("Searching Google for \"socialladder\".");
         WebElement slSiteGoogle = wd.findElement(By.partialLinkText("SocialLadder |"));
         slSiteGoogle.click();
@@ -130,9 +138,11 @@ public class App {
         
       try {
     	  Thread.sleep(1000);
-        WebElement surveyName = wd.findElement(By.id("input_332"));
+        WebElement surveyName = wd.findElement(By.xpath("/html/body/div[3]"
+        		+ "/md-dialog/div/div/section[2]/section[2]/div[2]/section/div[3]"
+        		+ "/md-input-container/div[1]/textarea"));
         surveyName.click();
-        surveyName.sendKeys("Regression Test" + nameChallenge());
+        surveyName.sendKeys("Regression Test 065120");
       } catch (Exception e) {
     	  System.out.print(e);
       }
@@ -173,11 +183,13 @@ public class App {
         		+ "/md-dialog/div/div/section[2]/section[2]/div[5]/section[6]/div[2]"
         		+ "/div/div/div/ul[1]/li/ul/li/md-input-container/div[1]/textarea"));
         option1Input.click();
-        option1Input.sendKeys(nameChallenge());
+        option1Input.sendKeys("061521");
    
-        WebElement option2Input = wd.findElement(By.id("input_439"));
+        WebElement option2Input = wd.findElement(By.xpath("/html/body/div[3]"
+        		+ "/md-dialog/div/div/section[2]/section[2]/div[5]/section[6]/div[2]/div/div/div/ul[2]/li/ul/li"
+        		+ "/md-input-container/div[1]/textarea"));
         option2Input.click();
-        option2Input.sendKeys("Wrong");
+        option2Input.sendKeys("061522");
      
         
         
@@ -203,7 +215,9 @@ public class App {
 
       	try {
       		Thread.sleep(2000);
-      	WebElement challengeDescription = wd.findElement(By.id("input_380"));
+      	WebElement challengeDescription = wd.findElement(By.xpath("/html/body/div[3]"
+      			+ "/md-dialog/div/div/section[2]/section[2]/div[6]"
+      			+ "/section/div[3]/div/md-input-container/div[1]/textarea"));
       	challengeDescription.click();
       	challengeDescription.sendKeys("Pick one of the two survey answers");
       	} catch (Exception e) {
@@ -239,11 +253,46 @@ public class App {
         	  System.out.print(e);
           }
       	
-      	      	
-    }
-    
-    public static void createFeed() {
+    	WebElement exitChallenge = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[1]/span/i"));
+    	exitChallenge.click();
     	
+    	try{
+            Thread.sleep(3000);     
+            WebElement exitYes = wd.findElement(By.xpath("/html/body/div[9]/md-dialog/md-dialog-actions/button[2]"));
+            exitYes.click();
+            } catch(Exception e){
+            System.out.println("Exception caught: \n"); e.printStackTrace();}
+        }
+      	      	   
+    
+    public static void testFeed(WebDriver wd) {
+
+    	WebElement feed = wd.findElement(By.xpath("/html/body/main-component/div/menu-component/md-sidenav/nav/a[7]"));
+    	feed.click();
+    
+        WebElement createButton = wd.findElement(By.xpath("/html/body/main-component/div/div/div/div/div[1]/div[1]/button"));
+        createButton.click();
+
+        try { 
+        	Thread.sleep(3000);
+        
+        WebElement feedName = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[1]/input"));
+        feedName.click();
+        feedName.sendKeys("Regression Test 065121");
+        
+        WebElement textOverlay = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[2]/input"));
+        textOverlay.click();
+        textOverlay.sendKeys("Regression Test 065122");
+        
+        WebElement notificationText = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[3]/input"));
+        notificationText.click();
+        notificationText.sendKeys("Regression Test 065123");
+        
+        } catch (Exception e) {
+        	System.out.println(e);
+        }
+         
+    
     }
 
 }
