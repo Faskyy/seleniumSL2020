@@ -14,7 +14,7 @@ public class App {
     static String currentDirectory = System.getProperty("user.dir");
     
     //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
-    static int userNum = 1;
+    static int userNum = 2;
     // return current date/time in readable format
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -22,7 +22,7 @@ public class App {
         return (formatter.format(date));
     }
     
-    public static String surveyName(){
+    public static String nameByDate(){
         SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy'A'");
         Date date = new Date(System.currentTimeMillis());
         return (formatter.format(date));
@@ -142,7 +142,7 @@ public class App {
         		+ "/md-dialog/div/div/section[2]/section[2]/div[2]/section/div[3]"
         		+ "/md-input-container/div[1]/textarea"));
         surveyName.click();
-        surveyName.sendKeys("Regression Test 065120");
+        surveyName.sendKeys("Regression Test " + nameByDate());
       } catch (Exception e) {
     	  System.out.print(e);
       }
@@ -183,13 +183,13 @@ public class App {
         		+ "/md-dialog/div/div/section[2]/section[2]/div[5]/section[6]/div[2]"
         		+ "/div/div/div/ul[1]/li/ul/li/md-input-container/div[1]/textarea"));
         option1Input.click();
-        option1Input.sendKeys("061521");
+        option1Input.sendKeys(nameByDate());
    
         WebElement option2Input = wd.findElement(By.xpath("/html/body/div[3]"
         		+ "/md-dialog/div/div/section[2]/section[2]/div[5]/section[6]/div[2]/div/div/div/ul[2]/li/ul/li"
         		+ "/md-input-container/div[1]/textarea"));
         option2Input.click();
-        option2Input.sendKeys("061522");
+        option2Input.sendKeys("Incorrect");
      
         
         
@@ -219,7 +219,7 @@ public class App {
       			+ "/md-dialog/div/div/section[2]/section[2]/div[6]"
       			+ "/section/div[3]/div/md-input-container/div[1]/textarea"));
       	challengeDescription.click();
-      	challengeDescription.sendKeys("Pick one of the two survey answers");
+      	challengeDescription.sendKeys("AUTO GENERATED CHALLENGE FOR REGRESSTION TEST " + nameByDate());
       	} catch (Exception e) {
       		System.out.print(e);
       	}
