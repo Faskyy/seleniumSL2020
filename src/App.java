@@ -254,15 +254,26 @@ public class App {
         	  System.out.print(e);
           }
       	
-    	WebElement exitChallenge = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[1]/span/i"));
-    	exitChallenge.click();
-    	
-    	try{
-            Thread.sleep(3000);     
-            WebElement exitYes = wd.findElement(By.xpath("/html/body/div[9]/md-dialog/md-dialog-actions/button[2]"));
-            exitYes.click();
-            } catch(Exception e){
-            System.out.println("Exception caught: \n"); e.printStackTrace();}
+      	WebElement savePublish = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[2]/section[2]/div[8]/section[2]/div[1]"));
+      	savePublish.click();
+      	
+      	try { 
+      		Thread.sleep(3000);
+      	
+      	WebElement submitBtn = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[2]/section[2]/div[8]/section[2]/div[1]"));
+      	submitBtn.click();
+      	} catch (Exception e) {
+      	System.out.print(e);
+    }
+//    	WebElement exitChallenge = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[1]/span/i"));
+//    	exitChallenge.click();
+//    	
+//    	try{
+//            Thread.sleep(3000);     
+//            WebElement exitYes = wd.findElement(By.xpath("/html/body/div[9]/md-dialog/md-dialog-actions/button[2]"));
+//            exitYes.click();
+//            } catch(Exception e){
+//            System.out.println("Exception caught: \n"); e.printStackTrace();}
         }
       	      	   
     
@@ -331,13 +342,14 @@ public class App {
         WebElement save = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[3]/button[1]"));
         save.click();
         
-        WebElement saveDraft = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[3]/button[1]"));
-        saveDraft.click();
+        WebElement savePublish = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[3]/button[2]"));
+        savePublish.click();
  
         }
         
     
 }
+    
     
     
     
