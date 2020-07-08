@@ -279,15 +279,15 @@ public class App {
         
         WebElement feedName = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[1]/input"));
         feedName.click();
-        feedName.sendKeys("Regression Test 065121");
+        feedName.sendKeys("Regression Test " + nameByDate());
         
         WebElement textOverlay = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[2]/input"));
         textOverlay.click();
-        textOverlay.sendKeys("Regression Test 065122");
+        textOverlay.sendKeys(nameByDate());
         
         WebElement notificationText = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[3]/input"));
         notificationText.click();
-        notificationText.sendKeys("Regression Test 065123");
+        notificationText.sendKeys(nameByDate());
         
         } catch (Exception e) {
         	System.out.println(e);
@@ -311,6 +311,25 @@ public class App {
         } catch (Exception e) {
         	System.out.print(e);
         }       
+        
+        WebElement directChallenge = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[7]/div/md-select[2]"));
+        directChallenge.click();
+        
+        try {
+        	Thread.sleep(3000);
+        
+        WebElement releaseTest = wd.findElement(By.xpath("/html/body/div[10]/md-select-menu/md-content/md-option[1]"));
+        releaseTest.click();
+        } catch (Exception e) {
+        	System.out.print(e);
+        }
+        
+//        WebElement link = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[7]/div/input"));
+//        link.click();
+//        link.sendKeys("https://socialladder.rkiapps.com/portal/#/challenges");
+  
+        WebElement save = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[3]/button[1]"));
+        save.click();
         
         WebElement saveDraft = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[3]/button[1]"));
         saveDraft.click();
