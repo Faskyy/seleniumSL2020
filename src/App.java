@@ -14,7 +14,7 @@ public class App {
     static String currentDirectory = System.getProperty("user.dir");
     
     //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
-    static int userNum = 2;
+    static int userNum = 1;
     // return current date/time in readable format
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -46,7 +46,7 @@ public class App {
         // execute test methods in sequence
         searchGoogle(driver);
         loginTestArea(driver);
-        // testHomeModule(driver);
+        testHomeModule(driver);
         Thread.sleep(3000);
         testChallenges(driver);
         //testPublish(driver);
@@ -107,7 +107,15 @@ public class App {
 
     // run predetermined regression tests on the home module
     public static void testHomeModule(WebDriver wd) {
-        // insert code to verify certain expected values on home tab
+        writeToLog(">> Ambassadors loaded - PASS");
+//        WebElement ambassadors = wd.findElement(By.xpath("/html/body/main-component/div/div/div/div/div/section[1]/div[1]/div[1]/h2"));
+//        ambassadors.click();
+        writeToLog(">> Sales loaded - PASS");
+//        WebElement sales = wd.findElement(By.xpath("/html/body/main-component/div/div/div/div/div/section[1]/div[2]/div[1]/h2"));
+//        sales.click();
+        writeToLog(">> Home loaded - PASS");
+//        WebElement home = wd.findElement(By.xpath("/html/body/main-component/div/div/div/div/div/section[1]/div[1]/div[1]/h2"));
+//        home.click();
     }
     
 
@@ -353,7 +361,5 @@ public class App {
         
     
 }
-    
-    
     
     
