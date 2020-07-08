@@ -14,7 +14,7 @@ public class App {
     static String currentDirectory = System.getProperty("user.dir");
     
     //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
-    static int userNum = 1;
+    static int userNum = 2;
     // return current date/time in readable format
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -253,14 +253,18 @@ public class App {
           } catch (Exception e) {
         	  System.out.print(e);
           }
-      	
+      	try{
+              Thread.sleep(1000);
       	WebElement savePublish = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[2]/section[2]/div[8]/section[2]/div[1]"));
-      	savePublish.click();
+        savePublish.click();
+        } catch (Exception e) {
+            System.out.print(e);
+        }
       	
       	try { 
       		Thread.sleep(3000);
       	
-      	WebElement submitBtn = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[2]/section[2]/div[8]/section[2]/div[1]"));
+      	WebElement submitBtn = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[3]/div[3]/button/span"));
       	submitBtn.click();
       	} catch (Exception e) {
       	System.out.print(e);
