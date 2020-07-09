@@ -51,6 +51,7 @@ public class App {
         testChallenges(driver);
         //testPublish(driver);
         testFeed(driver);
+        testReporting(driver);
         // close the browser
         Thread.sleep(5000);
         driver.close();
@@ -358,8 +359,22 @@ public class App {
         savePublish.click();
  
         }
+    
+    public static void testReporting(WebDriver wd) {
+    	
+    	try {
+    		Thread.sleep(3000);
+    	
+    	WebElement reporting = wd.findElement(By.xpath("/html/body/main-component/div/menu-component/md-sidenav/nav/a[4]"));
+    	reporting.click();
+    	
+    	} catch(Exception e) {
+    		System.out.print(e);
+    	}
+    	
+    }
         
     
 }
-    
+
     
