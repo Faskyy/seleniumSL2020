@@ -372,6 +372,44 @@ public class App {
     		System.out.print(e);
     	}
     	
+    	WebElement selectReport = wd.findElement(By.xpath("/html/body/main-component/div/div/div/div/div[1]/div[1]"
+    			+ "/md-input-container/md-select"));
+    	selectReport.click();
+    	
+    	WebElement option1 = wd.findElement(By.xpath("/html/body/div[7]/md-select-menu/md-content/md-option[1]"));
+    			option1.click();
+    	
+    			try {    				
+    				Thread.sleep(3000);
+    			WebElement save = wd.findElement(By.xpath("/html/body/main-component/div/div/div/div/div[1]/div[2]"
+    					+ "/section[1]/button"));
+    			save.click();
+    			
+    			} catch(Exception e) {
+    				System.out.print(e);
+    			}
+    			
+    			try {
+    				
+    			Thread.sleep(3000);
+    			WebElement reportName = wd.findElement(By.xpath("/html/body/div[8]/md-dialog/div/"
+    					+ "md-content/md-input-container[1]/div[1]/textarea"));
+    			reportName.click();
+    			reportName.sendKeys("Regression Test " + nameByDate());
+    			
+    			WebElement reportDesc = wd.findElement(By.xpath("/html/body/div[8]/md-dialog/div/"
+    					+ "md-content/md-input-container[2]/div[1]/textarea"));
+    			reportDesc.click();
+    			reportDesc.sendKeys("Regression Test " + nameByDate());
+    			
+    			} catch(Exception e) {
+    				System.out.print(e);
+    			}
+    			
+    			WebElement saveBtn = wd.findElement(By.xpath("/html/body/div[8]"
+    					+ "/md-dialog/div/md-dialog-actions/button[1]"));
+    			saveBtn.click();
+    			
     }
         
     
