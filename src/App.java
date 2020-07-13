@@ -15,7 +15,7 @@ public class App {
     static String currentDirectory = System.getProperty("user.dir");
     
     //NOTE - CONFIGURE BEFORE USE!! MAC = 1, PC = 2
-    static int userNum = 2;
+    static int userNum = 1;
     // return current date/time in readable format
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -46,7 +46,7 @@ public class App {
         final WebDriver driver = new ChromeDriver();
 
         //add 30 sec implicit wait for variable connection speeds
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         // execute test methods in sequence
         searchGoogle(driver);
@@ -56,6 +56,7 @@ public class App {
         testChallenges(driver);
         //testPublish(driver);
         testFeed(driver);
+        testReporting(driver);
         // close the browser
         //Thread.sleep(5000);
         driver.close();
@@ -72,7 +73,7 @@ public class App {
         writeToLog("Browser loaded to www.google.com.");
         
         try {
-        	//Thread.sleep(1500);
+        	Thread.sleep(3000);
         WebElement searchField = wd.findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div[1]/div[1]/div/div[2]/input"));
         WebElement searchButton = wd
                 .findElement(By.xpath("//*[@id=\"tsf\"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]"));
@@ -84,8 +85,15 @@ public class App {
         }
         
         writeToLog("Searching Google for \"socialladder\".");
+        try {
+        	
+        Thread.sleep(3000);
         WebElement slSiteGoogle = wd.findElement(By.partialLinkText("SocialLadder |"));
         slSiteGoogle.click();
+        
+        }catch (Exception e) {
+        	System.out.print(e);
+        }
         writeToLog(">> Site located on Google - PASS");
     }
 
@@ -96,7 +104,7 @@ public class App {
         WebElement slSiteLogin = wd.findElement(By.xpath("/html/body/div[1]/nav/div[1]/div[2]/ul/li[6]/a"));
         slSiteLogin.click();
         writeToLog(">> SL login page loaded - PASS");
-        //Thread.sleep(2000);
+        Thread.sleep(2000);
         WebElement emailInput = wd.findElement(By.id("input_0"));
         emailInput.click();
         //manually input username
@@ -117,13 +125,19 @@ public class App {
     
 
     public static void testChallenges(WebDriver wd) {
-        WebElement challengeBtn = wd.findElement(By.xpath("/html/body/main-component/div/menu-component/md-sidenav/nav/a[2]/span"));
+        
+    	try { 
+    		Thread.sleep(3000);
+    	
+    	WebElement challengeBtn = wd.findElement(By.xpath("/html/body/main-component/div/menu-component/md-sidenav/nav/a[2]/span"));
         challengeBtn.click();
-
-        //// a[contains(text(),'Create')] possibility if not using class type
+    	} catch (Exception e) {
+    		System.out.print(e);
+    	}
+        
         try {
 
-            //Thread.sleep(3000);
+            Thread.sleep(3000);
             WebElement createButton = wd.findElement(By.xpath("//button[@class=\"md-primary md-raised md-button md-ink-ripple\"]"));
             createButton.click();
 
@@ -132,7 +146,7 @@ public class App {
         }
 
         try {
-            //Thread.sleep(3000);
+            Thread.sleep(3000);
             WebElement surveyButton = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[2]/"
             		+ "section[2]/div[1]/section[1]/div/section[2]/section/div[2]"));
            
@@ -142,8 +156,7 @@ public class App {
         }
         
       try {
-    	  //Thread.sleep(1000);
-        
+    	  Thread.sleep(1000);        
     	  WebElement surveyName = wd.findElement(By.xpath("/html/body/div[3]"
         		+ "/md-dialog/div/div/section[2]/section[2]/div[2]/section/div[3]"
         		+ "/md-input-container/div[1]/textarea"));
@@ -154,7 +167,7 @@ public class App {
       }
         
         try {
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
         WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
         		+ "/md-dialog/div/div/section[3]/div[2]/button"));
         	nextButton.click();
@@ -165,7 +178,7 @@ public class App {
         }
         
         try {
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
         	WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
         			+ "/md-dialog/div/div/section[3]/div[2]/button"));
         	nextButton.click();
@@ -174,7 +187,7 @@ public class App {
         }
         
         try {
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
         
         WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
         		+ "/md-dialog/div/div/section[3]/div[2]/button"));
@@ -200,7 +213,7 @@ public class App {
         
         
       try {
-    	  //Thread.sleep(1000);
+    	  Thread.sleep(3000);
       
         WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
         		+ "/md-dialog/div/div/section[3]/div[2]/button"));
@@ -210,7 +223,7 @@ public class App {
       }
       
       try {
-    	  //Thread.sleep(1000);
+    	  Thread.sleep(1000);
       
         WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
         		+ "/md-dialog/div/div/section[3]/div[2]/button"));
@@ -220,7 +233,7 @@ public class App {
       }
 
       	try {
-      		//Thread.sleep(2000);
+      		Thread.sleep(2000);
       	WebElement challengeDescription = wd.findElement(By.xpath("/html/body/div[3]"
       			+ "/md-dialog/div/div/section[2]/section[2]/div[6]"
       			+ "/section/div[3]/div/md-input-container/div[1]/textarea"));
@@ -231,7 +244,7 @@ public class App {
       	}
       	
       	try {
-      	  //Thread.sleep(1000);
+      	  Thread.sleep(1000);
         
           WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
           		+ "/md-dialog/div/div/section[3]/div[2]/button"));
@@ -250,7 +263,7 @@ public class App {
       	allUsers.click();
       	
       	try {
-        	  //Thread.sleep(1000);
+        	  Thread.sleep(1000);
           
             WebElement nextButton = wd.findElement(By.xpath("/html/body/div[3]"
             		+ "/md-dialog/div/div/section[3]/div[2]/button"));
@@ -259,7 +272,7 @@ public class App {
         	  System.out.print(e);
           }
       	try{
-              //Thread.sleep(1000);
+              Thread.sleep(1000);
       	WebElement savePublish = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[2]/section[2]/div[8]/section[2]/div[1]"));
         savePublish.click();
         } catch (Exception e) {
@@ -267,7 +280,7 @@ public class App {
         }
       	
       	try { 
-      		//Thread.sleep(3000);
+      		Thread.sleep(3000);
       	
       	WebElement submitBtn = wd.findElement(By.xpath("/html/body/div[3]/md-dialog/div/div/section[3]/div[3]/button/span"));
       	submitBtn.click();
@@ -288,14 +301,20 @@ public class App {
     
     public static void testFeed(WebDriver wd) {
 
+    	try {
+    		
+    	Thread.sleep(3000);
     	WebElement feed = wd.findElement(By.xpath("/html/body/main-component/div/menu-component/md-sidenav/nav/a[7]"));
     	feed.click();
     
         WebElement createButton = wd.findElement(By.xpath("/html/body/main-component/div/div/div/div/div[1]/div[1]/button"));
         createButton.click();
+    	} catch (Exception e) {
+    		System.out.print(e);
+    	}
 
         try { 
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
         
         WebElement feedName = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[1]/input"));
         feedName.click();
@@ -316,15 +335,19 @@ public class App {
         WebElement dropDown = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[7]/div/md-select"));
         dropDown.click();
     
-        		
+        try {
+        		Thread.sleep(3000);
         WebElement challengeOption = wd.findElement(By.xpath("/html/body/div[8]/md-select-menu/md-content/md-option[3]"));
         challengeOption.click();
+        } catch (Exception e) {
+        	System.out.print(e);
+        }
         
         WebElement dropDown2 = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[2]/div[8]/md-select"));
         dropDown2.click();
         
         try {
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
         
         WebElement allUsers = wd.findElement(By.xpath("/html/body/div[9]/md-select-menu/md-content/md-option[2]"));
         allUsers.click();
@@ -336,7 +359,7 @@ public class App {
         directChallenge.click();
         
         try {
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
         
         WebElement releaseTest = wd.findElement(By.xpath("/html/body/div[10]/md-select-menu/md-content/md-option[1]"));
         releaseTest.click();
@@ -351,14 +374,74 @@ public class App {
         WebElement save = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[3]/button[1]"));
         save.click();
         
+    try { 
+    	Thread.sleep(3000);
+    
         WebElement savePublish = wd.findElement(By.xpath("/html/body/div[7]/md-dialog/section/div[3]/button[2]"));
         savePublish.click();
+    } catch (Exception e) {
+    	System.out.print(e);
+    }
  
         }
+
+    
+    public static void testReporting(WebDriver wd) {
+    	
+    	try {
+    		Thread.sleep(3000);
+    	WebElement testReport = wd.findElement(By.xpath("/html/body/main-component/div/menu-component/md-sidenav/nav/a[4]"));
+    	testReport.click();
+    	} catch (Exception e) {
+    		System.out.print(e);
+    	}
+    	
+    	try {
+    		Thread.sleep(3000);
+    	WebElement selectReport = wd.findElement(By.xpath("/html/body/main-component/div/div/div/div/div[1]/div[1]/md-input-container/md-select"));
+    	selectReport.click();
+    	} catch (Exception e) {
+    		System.out.print(e);
+    	}
+    	
+    	try {
+    		Thread.sleep(3000);
+    	
+    	WebElement option1 = wd.findElement(By.xpath("/html/body/div[7]/md-select-menu/md-content/md-option[1]"));
+    			option1.click();
+    			
+    	} catch (Exception e) {
+    		System.out.print(e);
+    	}
+    	
+    			try {    				
+    				Thread.sleep(3000);
+    			WebElement save = wd.findElement(By.xpath("/html/body/main-component/div/div/div/div/div[1]/div[2]"
+    					+ "/section[1]/button"));
+    			save.click();
+    			} catch(Exception e) {
+    				System.out.print(e);
+    			}
+    			
+    			try {
+    			Thread.sleep(3000);
+    			WebElement reportName = wd.findElement(By.xpath("/html/body/div[8]/md-dialog/div/"
+    					+ "md-content/md-input-container[1]/div[1]/textarea"));
+    			reportName.click();
+    			reportName.sendKeys("Regression Test " + nameByDate());
+    			WebElement reportDesc = wd.findElement(By.xpath("/html/body/div[8]/md-dialog/div/"
+    					+ "md-content/md-input-container[2]/div[1]/textarea"));
+    			reportDesc.click();
+    			reportDesc.sendKeys("Regression Test " + nameByDate());
+    			} catch(Exception e) {
+    				System.out.print(e);
+    			}
+    			WebElement saveBtn = wd.findElement(By.xpath("/html/body/div[8]"
+    					+ "/md-dialog/div/md-dialog-actions/button[1]"));
+    			saveBtn.click();
+    }
         
-    
 }
-    
-    
+
     
     
