@@ -37,7 +37,7 @@ public class App {
         writeToLog("++ Test initialized at " + getTime());
         // configure driver executable, initialize
         if(userNum == 1){
-            System.setProperty("webdriver.chrome.driver", "/Users/fahdksara/Desktop/SeleniumTest/Installers/Drivers/chromedriver");
+            System.setProperty("webdriver.chrome.driver", ""); //enter directory manuall
         }
         if(userNum == 2){
             System.setProperty("webdriver.chrome.driver", currentDirectory + "\\src\\chromedriver.exe");
@@ -108,11 +108,11 @@ public class App {
         WebElement emailInput = wd.findElement(By.id("input_0"));
         emailInput.click();
         //manually input username
-        emailInput.sendKeys("onebulletboy@socialladderapp.com");
+        emailInput.sendKeys("");
         WebElement passwordInput = wd.findElement(By.id("input_1"));
         passwordInput.click();
         //manually input password
-        passwordInput.sendKeys("social33!");
+        passwordInput.sendKeys("");
         writeToLog("Credentials entered.");
         WebElement loginButton = wd.findElement(By.xpath("/html/body/div/md-content[1]/button"));
         loginButton.click();
